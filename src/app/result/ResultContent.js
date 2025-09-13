@@ -1,25 +1,17 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { Suspense } from "react";
-import ResultContent from "./ResultContent";
 
-
-export default function ResultPage() {
-   <Suspense fallback={<div className="text-center mt-10">Carregando resultado...</div>}>
-      <ResultContent />
-    </Suspense>
+export default function ResultContent() {
   const searchParams = useSearchParams();
   const score = searchParams.get("score");
-  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-pink-50 flex flex-col items-center justify-center text-center px-4">
       <h1 className="text-4xl font-bold text-pink-600 mb-4">🎉 Resultado 🎉</h1>
       <p className="text-xl text-gray-700 mb-6">Você acertou {score} de 3 perguntas!</p>
       <button
-        onClick={() => router.push("/")}
+        onClick={() => window.location.href = "/"}
         className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg mb-4"
       >
         Jogar Novamente
@@ -28,7 +20,7 @@ export default function ResultPage() {
       <div className="mt-8">
         <p className="text-lg text-gray-600 mb-2">Quer jogar algo mais fofo?</p>
         <button
-          onClick={() => router.push("/potinho")}
+          onClick={() => window.location.href = "/potinho"}
           className="text-pink-500 hover:text-pink-600 text-3xl animate-bounce"
         >
           ↓
